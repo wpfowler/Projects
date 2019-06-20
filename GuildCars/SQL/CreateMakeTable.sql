@@ -1,0 +1,22 @@
+USE [GuildCars]
+GO
+
+/****** Object:  Table [dbo].[Make]    Script Date: 3/30/2019 7:18:02 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Make](
+	[MakeId] [int] IDENTITY(1,1) NOT NULL,
+	[Description] [varchar](50) NOT NULL,
+	[UserId] [nvarchar](128) NULL,
+ CONSTRAINT [PK_Make] PRIMARY KEY CLUSTERED 
+(
+	[MakeId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+

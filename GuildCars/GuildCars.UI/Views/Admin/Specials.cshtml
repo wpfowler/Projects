@@ -1,0 +1,48 @@
+﻿@model IEnumerable<GuildCars.Models.Models.Tables.Specials>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" style="margin-top:20px;">
+            @Html.Label("Title")
+            @Html.TextBox("Title", null, new { @class = "form-control", placeholder = "Title", required = "required", title = "Please enter a Title", maxLength = "50" })<br />
+        </div>
+        <div class="col-md-12"></div>
+
+        <div class="col-md-12">
+            @Html.Label("Description") @Html.TextArea("Description", new { @class = "form-control", placeholder = "Description", required = "required", title = "Please enter a Description", maxLength = "255" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <br />
+            <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+    </div>
+</div>
+}
+
+<div class="container" style="margin-top:20px;">
+    <div class="row">
+        <div class="col-md-12">
+            @foreach (var s in Model)
+            {
+            <div class="col-md-12 table-bordered" style="margin-top:20px;">
+                <div class="row">
+                    <div class="col-md-6 text-left"><h3>@Html.DisplayFor(m => s.Title)</h3></div>
+                    <div class="col-md-6 text-right"  style="margin-top:20px;" >
+                        @Html.ActionLink("Delete", "DeleteSpecial", "Admin", new { s.SpecialsId }, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-left">
+                        @Html.DisplayFor(m => s.Description)
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>

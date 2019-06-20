@@ -1,0 +1,116 @@
+﻿@model GuildCars.UI.Models.AddEditVehicleViewModel
+
+@{
+    ViewBag.Title = "AddVehicle";
+}
+
+<h2>Edit Vehicle</h2>
+@using (Html.BeginForm("EditVehicle", "Admin", FormMethod.Post,
+                new { enctype = "multipart/form-data", id = "frmUpload" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4" style="padding-bottom: 15px; padding-top:15px">
+                @Html.LabelFor(m => m.MakeId, "Make") <br />
+                @Html.DropDownListFor(m => m.MakeId, Model.Makes, "-Select Make-", new { @class = "form-control", placeholder = "Make", required = "required", title = "Please select a make" })
+            </div>
+            <div class="col-md-4" style="padding-bottom: 15px; padding-top:15px">
+                @Html.LabelFor(m => m.ModelId, "Model") <br />
+                @Html.DropDownListFor(m => m.ModelId, Model.Models, "-Select Model-", new { @class = "form-control", placeholder = "Model", title = "Please select a Model" })
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4" style="padding-bottom: 15px; padding-top:15px">
+                @Html.LabelFor(m => m.Condition, "Type") <br />
+                @Html.DropDownListFor(m => m.Condition, Model.Conditions, "-Select Type-", new { @class = "form-control", placeholder = "Type", required = "required", title = "Please select a type" })
+            </div>
+            <div class="col-md-4" style="padding-bottom: 15px; padding-top:15px">
+                @Html.LabelFor(m => m.BodyStyle, "Body Style") <br />
+                @Html.DropDownListFor(m => m.BodyStyle, Model.BodyStyles, "-Select Body Style-", new { @class = "form-control", placeholder = "Body Style", required = "required", title = "Please select a body style" })
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4" style="padding-bottom: 15px; padding-top:15px">
+                @Html.LabelFor(m => m.Year, "Years") <br />
+                @Html.DropDownListFor(m => m.Year, Model.Years, "-Select Type -", new { @class = "form-control", placeholder = "Year", required = "required", title = "Please select a year" })
+            </div>
+            <div class="col-md-4" style="padding-bottom: 15px; padding-top:15px">
+                @Html.LabelFor(m => m.Transmission, "Transmission") <br />
+                @Html.DropDownListFor(m => m.Transmission, Model.Transmissions, "-Select Transmission-", new { @class = "form-control", placeholder = "Transmission", required = "required", title = "Please enter a body style" })
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4" style="padding-bottom: 15px; padding-top:15px">
+                @Html.LabelFor(m => m.ExteriorColor, "Color") <br />
+                @Html.DropDownListFor(m => m.ExteriorColor, Model.ExteriorColors, "-Select Color -", new { @class = "form-control", placeholder = "Color", required = "required", title = "Please select a color" })
+            </div>
+            <div class="col-md-4" style="padding-bottom: 15px; padding-top:15px">
+                @Html.LabelFor(m => m.InteriorColor, "Interior") <br />
+                @Html.DropDownListFor(m => m.InteriorColor, Model.InteriorColors, "-Select Interior-", new { @class = "form-control", placeholder = "Interior", required = "required", title = "Please select interior color" })
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4" style="padding-bottom: 15px; padding-top:15px">
+                @Html.LabelFor(m => m.Mileage, "Mileage") <br />
+                @Html.TextBoxFor(m => m.Mileage, new { @class = "form-control", placeholder = "Mileage", required = "required", title = "Please enter mileage" })
+            </div>
+            <div class="col-md-4" style="padding-bottom: 15px; padding-top:15px">
+                @Html.LabelFor(m => m.VIN, "VIN #") <br />
+                @Html.TextBoxFor(m => m.VIN, new { @class = "form-control", placeholder = "Mileage", required = "required", title = "Please enter VIN #" })
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4" style="padding-bottom: 15px; padding-top:15px">
+                @Html.LabelFor(m => m.MSRP, "MSRP") <br />
+                @Html.TextBoxFor(m => m.MSRP, new { @class = "form-control", placeholder = "MSRP", required = "required", title = "Please enter MSRP" })
+            </div>
+            <div class="col-md-4" style="padding-bottom: 15px; padding-top:15px">
+                @Html.LabelFor(m => m.SalePrice, "Sale Price") <br />
+                @Html.TextBoxFor(m => m.SalePrice, new { @class = "form-control", placeholder = "Sale Price", required = "required", title = "Please enter Sale Price" })
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8" style="padding-bottom: 15px; padding-top:15px">
+                @Html.LabelFor(m => m.Description, "Description") <br />
+                @Html.TextAreaFor(m => m.Description, new { @class = "form-control ", placeholder = "Description", required = "required", title = "Please enter a description" })
+                @Html.HiddenFor(m => m.VehicleId)
+                @Html.HiddenFor(m => m.ImageFileName)
+                @Html.HiddenFor(m => m.UserId)
+            </div>
+
+        </div>
+        <div class="row" style="padding-bottom: 15px; padding-top:15px">
+            <div class="col-md-4">
+                <img src="@Url.Content("~/Images/" + Model.ImageFileName)" /><br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label>Select File:</label>
+                    @Html.TextBoxFor(m => m.UploadedFile,
+                     new { type = "file", @class = "form-control" })
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>@Html.ActionLink("Delete", "DeleteVehicle", "Admin", new { id = Model.VehicleId },new { @class="btn btn-danger"})
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                 @Html.CheckBoxFor(m => m.FeaturedFlag) @Html.LabelFor(m => m.FeaturedFlag, "Feature this vehicle")
+            </div>
+        </div>
+    </div>
+}

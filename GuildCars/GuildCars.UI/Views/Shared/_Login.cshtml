@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @if (User.Identity.IsAuthenticated && !User.IsInRole("disabled"))
+            {
+                <a href="#">Hello @User.Identity.GetUserName()!</a>
+            }
+            else
+            {
+                <a href="#">You are not an authorized user of this site!</a>
+            }
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Log in", "Login", "Account")</li>
+    </ul>
+}

@@ -1,0 +1,23 @@
+﻿@model GuildCars.Models.Models.Queries.VehicleQueryModel
+    
+@{
+    ViewBag.Title = "Delete Vehicle";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Delete Vehicle</h3>
+        @Html.ActionLink("Vehicles", "Vehicles", "Admin")
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm("DeleteVehicle", "Admin", FormMethod.Post))
+        {
+            @Html.HiddenFor(m => m.VehicleId)
+            <p>Are you sure that you wish to delete this Vehicle? @Html.DisplayFor(m => m.MakeDescription)?</p>
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+            @Html.ActionLink("Cancel", "Vehicles", "Admin", null, new { @class = "btn btn-sm btn-info" })
+        }
+    </div>
+</div>

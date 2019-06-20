@@ -1,0 +1,60 @@
+﻿@model GuildCars.Models.Models.Queries.VehicleQueryModel
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Vehicle Details</h2>
+
+<div class="row table-bordered">
+    <div class="col-md-12" style="padding-top: 15px;">
+        <div class="col-md-3">
+            @Html.DisplayFor(m => Model.Year)
+            @Html.DisplayFor(m => Model.MakeDescription)
+            @Html.DisplayFor(m => Model.ModelDescription)<br />
+            <img src="@Url.Content("~/Images/" + Model.ImageFileName)" /><br />
+        </div>
+        <div class="col-md-3">
+            @Html.LabelFor(m => Model.BodyStyle, "Body Style:")
+            @Html.DisplayFor(m => Model.BodyStyle)<br />
+            @Html.LabelFor(m => Model.TransmissionType, "Transmission:")
+            @Html.DisplayFor(m => Model.TransmissionType)<br />
+            @Html.LabelFor(m => Model.ExteriorColor, "Color:")
+            @Html.DisplayFor(m => Model.ExteriorColor)
+        </div>
+        <div class="col-md-3">
+            @Html.LabelFor(m => Model.InteriorColor, "Interior")
+            @Html.DisplayFor(m => Model.InteriorColor)<br />
+            @Html.LabelFor(m => Model.Mileage, "Mileage:")
+            @Html.DisplayFor(m => Model.Mileage)<br />
+            @Html.LabelFor(m => Model.VIN, "VIN")
+            @Html.DisplayFor(m => Model.VIN)
+        </div>
+        <div class="col-md-3">
+            @Html.LabelFor(m => Model.ConditionType, "Conditon:")
+            @Html.DisplayFor(m => Model.ConditionType)<br />
+            @Html.LabelFor(m => Model.SalePrice)
+            <label>@string.Format("{0:C}", Model.SalePrice, "Sale Price:")</label><br />
+            @Html.LabelFor(m => Model.MSRP)
+            <label>@string.Format("{0:C}", Model.MSRP)</label><br />
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+    <div class="col-md-9 text-left" style="padding-top: 5px;">
+        @Html.LabelFor(m => Model.Description, "Description")
+        @Html.DisplayFor(m => Model.Description)
+    </div>
+    @if (Model.SoldFlag == false)
+    {
+        <div class="col-md-12 text-right" style="padding-bottom: 5px;">
+            @Html.ActionLink("Contact Us", "Contact", "Home", new { Model.VehicleId }, new { @class = "btn btn-primary" })<br />
+        </div>
+    }
+    else
+    { 
+        <div class="col-md-12 text-right" style="padding-bottom: 5px;">
+            <h3><Label class="alert-info text-right">Unavailable-Sold!</Label></h3>
+        </div>
+    }
+    <div class="col-md-12"></div>
+</div>
+

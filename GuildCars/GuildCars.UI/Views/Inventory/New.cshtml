@@ -1,0 +1,47 @@
+﻿@model GuildCars.UI.Models.SearchViewModel
+
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New Vehicles</h2>
+<div class="row text-center table-bordered">
+    <div class="col-md-2">
+        <label>Quick Search</label>
+        <input type="text" id="SearchTerm" class="form-control" />
+    </div>
+    <div class="col-md-2">
+        @Html.LabelFor(m => Model.YearMin, "Min Year")
+        @Html.DropDownListFor(m => Model.mnYear, Model.YearMin,"-No Min-", new { @class = "form-control" })
+    </div>
+    <div class="col-md-2">
+        @Html.LabelFor(m => Model.YearMax, "Max Year")
+        @Html.DropDownListFor(m => Model.mxYear, Model.YearMax, "-No Max-", new { @class = "form-control" })
+    </div>
+    <div class="col-md-2">
+        @Html.LabelFor(m => Model.mnPrice, "Min Price")
+        @Html.DropDownListFor(m => Model.mnPrice, Model.PriceMin,"-No Min-", new { @class = "form-control" })
+    </div>
+    <div class="col-md-2">
+        @Html.LabelFor(m => Model.mxPrice, "Max Price")
+        @Html.DropDownListFor(m => Model.mxPrice, Model.PriceMax,"-No Max-", new { @class = "form-control" })
+        @Html.Hidden("SearchMode", "New");
+     </div>
+    <div class="row text-center">
+        <div class="col-md-offset-0">
+            <button class="btn btn-primary text-center" style="width:250px" onclick="searchInventory()">Search</button>
+            <br /><br />
+        </div>
+    </div>
+</div>
+<h2>Search Results</h2>
+<div class="row">
+    <div class="col-md-12">
+     <div id="search-list-contentRows"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12"><label id="errors" hidden>Errors Go Here!</label></div>
+</div>
+
+

@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+    <h2>Admin</h2>
+    <div class="col-md-3 table-bordered">
+        <div class="row">
+            <div class="col-md-6" style="margin-top:10px">
+                @Html.ActionLink("Add Make", "AddMake", "Admin")<br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" style="margin-top:10px">
+                @Html.ActionLink("Add Model", "AddModel", "Admin")<br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" style="margin-top:10px">
+                @Html.ActionLink("Reports", "index", "Reports")<br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" style="margin-top:10px">
+                @Html.ActionLink("Search", "Vehicles", "Admin")<br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" style="margin-top:10px">
+
+                @Html.ActionLink("Specials", "Specials", "Admin")<br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" style="margin-top:10px;margin-bottom:10px">
+
+                @Html.ActionLink("Users", "Users", "Admin")
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+ 
+ 

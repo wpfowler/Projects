@@ -1,0 +1,51 @@
+﻿@model IEnumerable<GuildCars.Models.Models.Tables.Makes>
+
+@{
+    ViewBag.Title = "AddMake";
+}
+
+<h2>Makes</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 table-bordered" style="padding-bottom: 20px; padding-top:20px">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+            <div class="col-md-12">
+                @Html.Label("New Make")
+                @Html.TextBox("Description", null, new { @class = "form-control", placeholder = "Make", required = "required", title = "Please enter a make", maxLength = "50" })
+            </div>
+            <div class="col-md-12" style="padding-bottom: 20px; padding-top:20px">
+                <button type="submit">Save</button>
+            </div>
+            }
+            </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-hover" title="New Vehicles">
+                <caption><b>New Vehicles</b></caption>
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Make</th>
+                        <th scope="col">Date Added</th>
+                        <th scope="col">User</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var md in Model)
+                    {
+                        @Html.Raw("<tr><td>")
+                        @Html.DisplayFor(m => md.Description)
+                        @Html.Raw("</td><td>")
+                        @Html.DisplayFor(m => md.DateAdded)
+                        @Html.Raw("</td><td>")
+                        @Html.DisplayFor(m => md.UserName)
+                        @Html.Raw("</td></tr>")
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

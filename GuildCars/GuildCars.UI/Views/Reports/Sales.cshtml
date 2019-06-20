@@ -1,0 +1,53 @@
+﻿@model GuildCars.UI.Models.SalesReportSearchViewModel
+
+@{
+    ViewBag.Title = "Sales Report";
+}
+
+<h2>Sales Report</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 table-bordered" style="margin-top:20px; margin-bottom:20px;" title="Filters">
+            <div class="col-md-12" style="margin-top:20px;">
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.Label("User")
+                        @Html.DropDownListFor(m => m.userId, Model.Users, "-All Users-", new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.Label("From Date")
+                        @Html.TextBox("fromDate", "", new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-4" style="margin-bottom:20px;">
+                        @Html.Label("To Date")
+                        @Html.TextBox("toDate", "", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-md-offset-0" style="margin-top:20px; margin-bottom:20px">
+                        <button class="btn btn-primary text-center" style="width:150px" onclick="GetSalesReport()">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h4>Search Results</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-hover" title="New Vehicles">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">User</th>
+                        <th scope="col">Total Sales</th>
+                        <th scope="col">Total Vehicles</th>
+                    </tr>
+                </thead>
+                <tbody id="search-list-contentRows"></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12"><label id="errors" hidden>Errors Go Here!</label></div>
+    </div>
+</div>

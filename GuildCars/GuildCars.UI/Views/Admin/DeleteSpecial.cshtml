@@ -1,0 +1,24 @@
+﻿@model GuildCars.Models.Models.Tables.Specials
+
+@{
+    ViewBag.Title = "Delete Special";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Delete Vehicle</h3>
+        @Html.ActionLink("Specials", "Specials", "Admin")
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm("DeleteSpecial", "Admin", FormMethod.Post))
+        {
+            @Html.HiddenFor(m => m.SpecialsId)
+            <p>Are you sure that you wish to delete this Special? @Html.DisplayFor(m => m.Title)?</p>
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+            @Html.ActionLink("Cancel", "Specials", "Admin", null, new { @class = "btn btn-sm btn-info" })
+        }
+    </div>
+</div>
+

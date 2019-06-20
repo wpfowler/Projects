@@ -1,0 +1,119 @@
+﻿@model GuildCars.UI.Models.PurchaseViewModel
+
+@{
+    ViewBag.Title = "Purchase";
+}
+
+<h2>Purchase Vehicle</h2>
+<div class="container">
+    <div class="row  table-bordered">
+        <div class="col-md-3">
+            <img src="@Url.Content("~/Images/" + Model.VehicleDetail.ImageFileName)" /><br />
+        </div>
+        <div class="col-md-3">
+            @Html.LabelFor(m => Model.VehicleDetail.BodyStyle, "Body Style:")
+            @Html.DisplayFor(m => Model.VehicleDetail.BodyStyle)<br />
+            @Html.LabelFor(m => Model.VehicleDetail.TransmissionType, "Trans:")
+            @Html.DisplayFor(m => Model.VehicleDetail.TransmissionType)<br />
+            @Html.LabelFor(m => Model.VehicleDetail.ExteriorColor, "Color:")
+            @Html.DisplayFor(m => Model.VehicleDetail.ExteriorColor)
+        </div>
+        <div class="col-md-3">
+            @Html.LabelFor(m => Model.VehicleDetail.InteriorColor, "Interor:")
+            @Html.DisplayFor(m => Model.VehicleDetail.InteriorColor)
+            @Html.LabelFor(m => Model.VehicleDetail.Mileage, "Mileage:")
+            @Html.DisplayFor(m => Model.VehicleDetail.Mileage)
+            @Html.LabelFor(m => Model.VehicleDetail.VIN, "VIN:")
+            @Html.DisplayFor(m => Model.VehicleDetail.VIN)
+        </div>
+        <div class="col-md-3" style="padding-bottom: 30px;">
+            @Html.LabelFor(m => Model.VehicleDetail.SalePrice, "Sale Price:")
+            @Html.DisplayFor(m => Model.VehicleDetail.SalePrice)
+            @Html.LabelFor(m => Model.VehicleDetail.MSRP, "MSRP:")
+            @Html.DisplayFor(m => Model.VehicleDetail.MSRP)
+        </div>
+    </div>
+    <div class="col-md-12"></div>
+</div>
+<h2>Sales Information</h2>
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-md-6">
+                    @Html.LabelFor(m => Model.CustomerName, "Name")<br />
+                    @Html.TextBoxFor(m => Model.CustomerName, new { @class = "form-control", placeholder = "CustomerName", required = "required", title = "Please enter a name", maxlength = "100" })
+                    @Html.ValidationMessageFor(m => Model.CustomerName)
+                    @Html.HiddenFor(m => m.VehicleDetail.SalePrice)
+                    @Html.HiddenFor((m => Model.VehicleDetail.MSRP))
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(m => Model.Phone, "Phone")<br />
+                    @Html.TextBoxFor(m => Model.Phone, new { @class = "form-control", placeholder = "Phone", required = "required", title = "Please enter a valid phone number" })
+                    @Html.ValidationMessageFor(m => Model.Phone)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-md-6">
+                    @Html.LabelFor(m => Model.Email, "Email")<br />
+                    @Html.TextBoxFor(m => Model.Email, new { @class = "form-control", placeholder = "Email", required = "required", title = "Please enter a valid email address" })
+                    @Html.ValidationMessageFor(m => Model.Email)
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-md-6">
+                    @Html.LabelFor(m => Model.Street1, "Street 1")<br />
+                    @Html.TextBoxFor(m => Model.Street1, new { @class = "form-control", placeholder = "Street 1", required = "required", title = "Please enter a street" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(m => Model.Street2, "Street 2")<br />
+                    @Html.TextBoxFor(m => Model.Street2, new { @class = "form-control", placeholder = "Street 2" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-md-6">
+                    @Html.LabelFor(m => Model.City, "City")<br />
+                    @Html.TextBoxFor(m => Model.City, new { @class = "form-control", placeholder = "City", required = "required", title = "Please enter a valid city" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(m => Model.State, "State")<br />
+                    @Html.DropDownListFor(m => Model.State, Model.States, "-Choose One-", new { @class = "form-control", placeholder = "State", required = "required", title = "Please select a state" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-md-6">
+                    <label>Purchase Price</label>
+                    @Html.TextBoxFor(m => Model.PurchasePrice, new { @class = "form-control", placeholder = "Purchase Price", required = "required", title = "Please enter a valid purchase amount" })
+                    @Html.ValidationMessageFor(m => Model.PurchasePrice)
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(m => Model.PurchaseType, "Purchase Type")<br />
+                    @Html.DropDownListFor(m => Model.PurchaseType, Model.PurchaseTypes, "-Choose One-", new { @class = "form-control", placeholder = "Purchase Type", required = "required", title = "Please select a purchase type" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="padding-top: 15px;">
+                @Html.HiddenFor(m => Model.VehicleDetail.VehicleId)
+                <button type="submit" class="btn btn-sm btn-primary">Save</button>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-12"><label id="errors" hidden>Errors Go Here!</label></div>
+    </div>
+</div>
+
+
+

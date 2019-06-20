@@ -1,0 +1,62 @@
+﻿@model GuildCars.UI.Models.AddModelViewModel
+
+@{
+    ViewBag.Title = "AddModel";
+}
+
+<h2>Models</h2>
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-md-12 table-bordered" style="padding-top:20px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(m => m.ModelDescription, "New Model")
+                        @Html.TextBoxFor(m => m.ModelDescription, new { @class = "form-control", placeholder = "Model", required = "required", title = "Please enter a model", maxLength = "50" })
+                    </div>
+                    <div class="col-md-2">
+                        @Html.LabelFor(m => Model.MakeId, "Make")
+                        @Html.DropDownListFor(m => Model.MakeId, Model.Makes, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-left" style="padding-bottom: 20px; padding-top:20px">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered table-hover" title="Used Vehicles">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Make</th>
+                            <th scope="col">Model</th>
+                            <th scope="col">User</th>
+                            <th scope="col">Date Added</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var md in Model.Models)
+                        {
+                            @Html.Raw("<tr><td>")
+                            @Html.DisplayFor(m => md.MakeDescription)
+                            @Html.Raw("</td><td>")
+                            @Html.DisplayFor(m => md.Description)
+                            @Html.Raw("</td><td>")
+                            @Html.DisplayFor(m => md.DateAdded)
+                            @Html.Raw("</td><td>")
+                            @Html.DisplayFor(m => md.UserName)
+                            @Html.Raw("</td></tr>")
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div> 
+</div>
+
+ 

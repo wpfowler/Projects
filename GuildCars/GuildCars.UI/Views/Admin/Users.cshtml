@@ -1,0 +1,35 @@
+﻿@model IEnumerable<GuildCars.Models.Models.Tables.User>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2>Users</h2>
+@Html.ActionLink("Add User","AddUser","Admin")
+<table class="table table-bordered table-hover" title="New Vehicles">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Last Name</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model)
+        {
+            @Html.Raw("<tr><td>")
+            @Html.DisplayFor(m => u.LastName)
+            @Html.Raw("</td><td>")
+            @Html.DisplayFor(m => u.FirstName)
+            @Html.Raw("</td><td>")
+            @Html.DisplayFor(m => u.Email)
+            @Html.Raw("</td><td>")
+            @Html.DisplayFor(m => u.Role)
+            @Html.Raw("</td><td>")
+            @Html.ActionLink("Edit","EditUser","Admin", new { UserId = u.UserId }, new { @class = "btn btn-primary" })
+            @Html.Raw("</td></tr>")
+        }
+    </tbody>
+</table>
